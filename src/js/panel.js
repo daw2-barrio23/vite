@@ -79,14 +79,17 @@ export const panel = {
                 panel.bajar()
             }
             else if(event.key == 'ArrowUp'){
-                let resultado = panel.girarMiPieza()
+                let resultado = panel.girarComprobacion()
                 if(resultado == true){
-                    
-                    
+                    console.log("puede girar");
+                    panel.borrar()
+                    panel.nuevaPieza.girar()
                     panel.insertarPieza()
                     panel.pintaPanel()
                 }
-
+                else{
+                    console.log("no puede girar");
+                }
             }
         })
     },
@@ -143,16 +146,18 @@ export const panel = {
        let intervaloBajar = setInterval(panel.bajar,3000)
        console.log("ha entrado");
     },
-    girarMiPieza: ()=>{
-        let giroPieza = false
+    girarComprobacion: ()=>{
+        let resultadoGiro = false
 
-        
-       
+        panel.borrar()
+        panel.nuevaPieza.girar()
 
         if(panel.nuevaPieza.x + panel.nuevaPieza.longitud <=11 && panel.nuevaPieza.y + panel.nuevaPieza.altura <= 21){
-            giroPieza = true
+            resultadoGiro = true
         }
-       
-        return giroPieza
+        panel.nuevaPieza.girar()
+        panel.nuevaPieza.girar()
+        panel.nuevaPieza.girar()
+        return resultadoGiro
     }
 }
