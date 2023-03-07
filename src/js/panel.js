@@ -47,9 +47,10 @@ export const panel = {
         document.getElementById('panel').innerHTML = html
     },
     crearNuevaPieza: ()=>{
-        
+        const modeloAleatorio = Math.random()
+        const modelo = Math.round(modeloAleatorio)
        
-        panel.nuevaPieza = new  ModeloPieza(0)
+        panel.nuevaPieza = new  ModeloPieza(modelo)
         console.log(panel.nuevaPieza);
         let x = Math.ceil(Math.random()*((10-panel.nuevaPieza.longitud)));
         panel.nuevaPieza.x = x
